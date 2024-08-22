@@ -1,8 +1,7 @@
 package main
 
-import "fmt"
-
+import "github.com/benodiwal/mark-go/pkg/cli"
 
 func main() {
-	fmt.Println("Hi there")
+	cli.Execute()
 }
