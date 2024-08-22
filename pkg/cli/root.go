@@ -44,10 +44,15 @@ var rootCmd = &cobra.Command{
 			os.Exit(1)
 		}
 
-		render.RenderMarkdown(content)
+		rendered, err := render.RenderMarkdown(content)
+		if err != nil {
+			fmt.Println("Error rendering markdown:", err)
+			os.Exit(1)
+		}
+
+		fmt.Println(rendered)
 	},
 }
-
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {

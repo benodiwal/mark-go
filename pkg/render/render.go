@@ -1,8 +1,9 @@
 package render
 
 import (
-	"fmt"
 	"os"
+
+	"github.com/charmbracelet/glamour"
 )
 
 func ReadFile(filePath string) (string, error) {
@@ -13,6 +14,10 @@ func ReadFile(filePath string) (string, error) {
 	return string(data), nil
 }
 
-func RenderMarkdown(content string){
-	fmt.Println(content)
+func RenderMarkdown(content string) (string, error) {
+	r, _ := glamour.NewTermRenderer(
+		glamour.WithAutoStyle(),
+	)
+	out, err := r.Render(content)
+	return out, err
 }
